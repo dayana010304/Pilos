@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #1d436d;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.container{
+    width: 800px;
+    background: white;
+    border-radius: 7px;
+    padding: 30px 35px 0 35px;
+   
+}
+
+.container header{
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 30px 0;
+    text-align:center;
+}
+
+.container .form-princ{
+    width: 100%;
+    overflow: hidden;
+    
+}
+.form-princ form{
+    display: flex;
+    width: 400%;
+}
+
+.form-princ form .pagina{
+    width: 25%;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.form-princ form .pagina .titulo{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.form-princ form .pagina .campo{
+    height: 35px;
+    width: 350px;
+    margin: 40px 0;
+    display: flex;
+    position: relative;
+}
+
+.form-princ form .pagina .campo .label{
+    position: absolute;
+    top: -30px;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: italic;
+    float: left;
+    width: 100%;
+}
+
+.form-princ form .pagina .campo .input{
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 15px;
+}
+
+.form-princ form .pagina .campo .select{
+    width: 100%;
+    padding-left: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+.form-princ form .pagina .campo button{
+    width: 100%;
+    height: calc(100% + 5px);
+    margin-top: -20px;
+    border: none;
+    background: #f58c3a;
+    border-radius: 7px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s ease;
+    justify-content: flex-end;
+}
+
+.form-princ form .pagina .campo button:hover{
+    background: #1d436d;
+}
+
+.form-princ form .pagina .btns button{
+    margin-top: 20px!important;
+}
+
+.form-princ form .btns button.volver{
+    margin-top: 3px;
+    font-size: 17px;
+}
+
+form .pagina .btns .button.adelante{
+    margin-left: 3px;
+}
+
+.container .progre-bar{
+    display: flex;
+    margin: 0px 0;
+}
+.container .progre-bar .paso{
+    text-align: center;
+    width: 100%;
+    position: relative;
+    transition: 0.2s;
+}
+
+.progre-bar .paso p{
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.progre-bar .paso p.active{
+    color:#f58c3a;
+}
+
+.progre-bar .paso .num{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25px;
+    transition: 0.2s;
+}
+
+.progre-bar .paso .num.active{
+    border-color: #f58c3a;
+    background-color: #f58c3a;
+}
+
+.progre-bar .paso .num span{
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.progre-bar .paso .num.active span{
+    display: none;
+}
+
+
+.progre-bar .paso .check{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
+}
+
+.progre-bar .paso .check.active{
+    display: block;
+    color: #000;
+
+}
+
+.progre-bar .paso .num:before,
+.progre-bar .paso .num:after{
+    position: absolute;
+    content: '';
+    width: 70px;
+    height: 3px;
+    bottom: 11px;
+    right: -160px;
+    background: #000;
+}
+
+.progre-bar .paso:last-child .num:before,
+.progre-bar .paso:last-child .num:after{
+    display: none;
+}
+
+.progre-bar .paso .num.active:after{
+    background: #f58c3a;
+    animation: mov_Linea 0.3s linear forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+@keyframes mov_Linea {
+    100%{
+        transform: scaleX(1);
+    }
+}
