@@ -1,18 +1,68 @@
 <?php
-/*error_reporting(E_ALL ^ E_NOTICE);
-session_start();
-include("Modelo/Usuario.php");
-include("Control/ControlUsuario.php");
-$bot = $_POST['boton'];
-$_SESSION['correo'] = $_POST['email'];
-$_SESSION['clave'] = $_POST['password'];
-if (!empty($bot) && $bot == "logout") {
-    $objUsuario = new Usuario("", $_SESSION['correo'], $_SESSION['clave'], "", "", "", "");
-    $objCrtUsuario = new ControlUsuario($objUsuario);
-    $objU = $objCrtUsuario->consultarUsuario();
-    $id = $objU->getIdUsuario();
-    $tipo = $objU->getTipo();
-}*/
+
+    include ('./Control/ControlConexion.php');
+
+    session_start();
+
+    if(isset($_GET['cerrar'])){
+        session_unset();
+        
+        session_destroy();
+
+    }
+
+    if (isset($_SESSION['Rol'])){
+        switch($_SESSION['Rol']){
+            case 1:
+                header('location: registroCafeterias.php');
+            break;
+
+            case 2: 
+                header('location: registro.php');
+            break;
+
+            case 3:
+                header('location: consumo.php');
+            break;
+
+            default:
+        }
+    }
+
+    if(isset($_POST['Email']) && isset($_POST['Password'])){
+        $Email = $_POST['Email'];
+        $Password = $_POST['Password'];
+
+        $infoDB=new ControlConexion();
+        $consultaSQL= $infoDB->conectarBD()->prepare("SELECT * FROM Usuarios WHERE Email = :Email AND Password = :Password");
+        $consultaSQL->execute(['Email' => $Email, 'Password' => $Password]);
+        $row = $consultaSQL->fetch(PDO::FETCH_NUM);
+            if($row == true){
+                $Rol = $row[2];
+
+                $_SESSION['Rol'] = $Rol;
+                switch($_SESSION['Rol']){
+                    case 1:
+                        header('location: registroCafeterias.php');
+                    break;
+        
+                    case 2: 
+                        header('location: registro.php');
+                    break;
+
+                    case 3: 
+                        header('location: consumo.php');
+                    break;
+        
+                    default:
+                }
+
+            }else{
+                echo"No funciona";
+            }
+        
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,12 +110,12 @@ if (!empty($bot) && $bot == "logout") {
                                     <div class="text-center">
                                         <h1 class="h4 text-primary-900 mb-4"></h1>
                                     </div>
-                                    <form class="user" method="POST" action="home.php">
+                                    <form class="user" method="POST" action="#">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter Email Address..." required>
+                                            <input type="email" class="form-control form-control-user" id="Email" name="Email" placeholder="Enter Email Address..." required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="password" placeholder="password" name="password" required>
+                                            <input type="password" class="form-control form-control-user" id="Password" placeholder="Password" name="Password" required>
                                         </div>
                                         <input type="submit" class="btn btn-primary btn-user btn-block" name="boton" value="logout">
                                     </form>

@@ -15,14 +15,21 @@ class ControlConexion
         }
     }
 
+
 	public function agregarDatos($consultaSQL){
 		$conexionBD=$this->conectarBD();
         $consultaInsertarDatos= $conexionBD->prepare($consultaSQL);
         $resultado=$consultaInsertarDatos->execute();
         if ($resultado){
-            echo("Registro agregado con exito");
+            echo '<script type="text/javascript">
+                    alert("Registro guardado con exito");
+                    window.location.href="index.php";
+                </script>';
         }else{
-            echo("Error agregando el registro");
+            echo '<script type="text/javascript">
+                    alert("No se pudo guardar el registro");
+                    window.location.href="index.php";
+                </script>';
         }
 	}
 
@@ -32,6 +39,17 @@ class ControlConexion
         $consultaBuscarDatos->setFetchMode(PDO::FETCH_ASSOC);
         $consultaBuscarDatos->execute();
         return($consultaBuscarDatos->fetchAll());
+    }
+
+    public function editarDatos($consultaSQL){
+        $conexionBD=$this->conectarBD();
+        $consultaEditarDatos= $conexionBD->prepare($consultaSQL);
+        $resultado=$consultaEditarDatos->execute();
+        if($resultado){
+            echo("Registro editado con exito");
+        }else{
+            echo("Error editando el registro");
+        }
     }
 
 }
