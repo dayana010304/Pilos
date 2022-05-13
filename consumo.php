@@ -75,7 +75,7 @@ include("./Control/ControlConexion.php");
 <body>    
     <div class="container">
         <div style="text-align: right;">
-            <button class="btn btn-outline-success" type="submit" value="cerrar">Cerrar sesión</button>
+            <a class="btn btn-outline-success" type="submit" value="cerrar">Cerrar sesión</a>
         </div>
         <br>
         <div class="row">

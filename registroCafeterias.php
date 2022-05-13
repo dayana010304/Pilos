@@ -52,6 +52,10 @@ if (isset($_POST["botonEnvio"]))
 </head>
 <body> 
     <div class="container">
+        <div style="text-align: right;">
+            <a class="btn btn-outline-success" type="submit" value="cerrar">Cerrar sesión</a>
+        </div>
+        <br>
         <form action="registroCafeterias.php" method="POST">
             <div class="form-group row">
                 <label  class="col-sm-3 col-form-label">Nombre de la cafeteria:</label>

@@ -50,11 +50,9 @@ if (isset($_POST["botonEnvio"]))
 </head>
 <body> 
     <div class="container">
-        <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-               <a></a>
-            </div>
-        </nav>
+        <div style="text-align: right;">
+            <a class="btn btn-outline-success" type="submit" value="cerrar" >Cerrar sesión</a>
+        </div>
         <br>
         <form action="registro.php" method="POST">
             <div class="form-group row">
