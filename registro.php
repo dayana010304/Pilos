@@ -7,6 +7,14 @@
         if($_SESSION['Rol'] != 2){
             header('location: index.php');
         }
+        if(isset($_GET['cerrar'])){
+            session_unset();
+            
+            session_destroy();
+    
+            header('location: index.php');
+    
+        }
     }
 ?>
 

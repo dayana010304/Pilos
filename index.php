@@ -112,12 +112,12 @@
                                     </div>
                                     <form class="user" method="POST" action="#">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="Email" name="Email" placeholder="Enter Email Address..." required>
+                                            <input type="email" class="form-control form-control-user" id="Email" name="Email" placeholder="Correo electrónico." required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="Password" placeholder="Password" name="Password" required>
+                                            <input type="password" class="form-control form-control-user" id="Password" placeholder="Contraseña" name="Password" required>
                                         </div>
-                                        <input type="submit" class="btn btn-primary btn-user btn-block" name="boton" value="logout">
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" name="boton" value="Iniciar sesión">
                                     </form>
                                 </div>
                             </div>

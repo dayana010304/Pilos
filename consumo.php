@@ -7,6 +7,14 @@ if(!isset($_SESSION['Rol'])){
     if($_SESSION['Rol'] != 3){
         header('location: index.php');
     }
+    if(isset($_GET['cerrar'])){
+        session_unset();
+        
+        session_destroy();
+
+        header('location: index.php');
+
+    }
 }
 
 ?>
@@ -66,6 +74,10 @@ include("./Control/ControlConexion.php");
 </head>
 <body>    
     <div class="container">
+        <div style="text-align: right;">
+            <button class="btn btn-outline-success" type="submit" value="cerrar">Cerrar sesión</button>
+        </div>
+        <br>
         <div class="row">
             <div class="col align-self-start">
                 <form action="" method="POST">
