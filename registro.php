@@ -31,7 +31,7 @@ if (isset($_POST["botonEnvio"]))
 
     $consultaSQL="INSERT INTO Estudiantes (identificacion, fechaVencimiento) VALUES ('$identificacion', '$fechaVencimiento')";
 
-    $transaccion->agregarDatos($consultaSQL);    
+    $transaccion->agregarDatos($consultaSQL);        
 }
 
 ?>
