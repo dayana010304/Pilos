@@ -17,26 +17,6 @@ if(!isset($_SESSION['Rol'])){
 }
 ?>
 
-<?php
-
-include ('./Control/ControlConexion.php');
-
-if (isset($_POST["botonEnvio"]))
-{
-    $NombreCafeteria = $_POST["NombreCafeteria"];
-    $Email = $_POST["Email"];
-    $Password = $_POST["Password"];
-    $Rol = $_POST["Rol"];
-    
-    $transaccion = new ControlConexion();
-
-    $consultaSQL="INSERT INTO Usuarios (NombreCafeteria, Email, Password, Rol) VALUES ('$NombreCafeteria', '$Email', $Password, $Rol)";
-
-    $transaccion->agregarDatos($consultaSQL);    
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -56,7 +36,7 @@ if (isset($_POST["botonEnvio"]))
             <a class="btn btn-outline-success" type="submit" value="cerrar">Cerrar sesión</a>
         </div>
         <br>
-        <form action="registroCafeterias.php" method="POST">
+        <form action="./Control/insertarCafeterias.php" method="POST">
             <div class="form-group row">
                 <label  class="col-sm-3 col-form-label">Nombre de la cafeteria:</label>
                 <div class="col-sm-5">

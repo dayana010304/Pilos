@@ -1,6 +1,6 @@
 <?php
 
-    include ('./Control/ControlConexion.php');
+    include('./Control/conexion.php');
 
     session_start();
 
@@ -33,8 +33,7 @@
         $Email = $_POST['Email'];
         $Password = $_POST['Password'];
 
-        $infoDB=new ControlConexion();
-        $consultaSQL= $infoDB->conectarBD()->prepare("SELECT * FROM Usuarios WHERE Email = :Email AND Password = :Password");
+        $consultaSQL= $conexionBD->prepare("SELECT * FROM Usuarios WHERE Email = :Email AND Password = :Password");
         $consultaSQL->execute(['Email' => $Email, 'Password' => $Password]);
         $row = $consultaSQL->fetch(PDO::FETCH_NUM);
             if($row == true){
@@ -57,9 +56,11 @@
                     default:
                 }
             }else{
-                echo"No funciona";
-            }
-        
+                echo'<script type="text/javascript">
+                        alert("Correo electrónico o contraseña incorrectos");
+                        window.location.href="index.php";
+                    </script>';
+            } 
     }
     
 ?>

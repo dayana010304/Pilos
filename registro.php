@@ -16,20 +16,6 @@
     
         }
     }
-
-include ('./Control/ControlConexion.php');
-if (isset($_POST["botonEnvio"]))
-{
-    $identificacion = $_POST["identificacion"];
-    $fechaVencimiento = $_POST['fechaVencimiento'];
-
-    $transaccion = new ControlConexion();
-
-    $consultaSQL="INSERT INTO Estudiantes (identificacion, fechaVencimiento) VALUES ('$identificacion', '$fechaVencimiento')";
-
-    $transaccion->agregarDatos($consultaSQL);        
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +36,7 @@ if (isset($_POST["botonEnvio"]))
             <a class="btn btn-outline-success" type="submit" value="cerrar" >Cerrar sesión</a>
         </div>
         <br>
-        <form action="registro.php" method="POST">
+        <form action="./Control/insert.php" method="POST">
             <div class="form-group row">
                 <label  class="col-sm-2 col-form-label">Identificación:</label>
                 <div class="col-sm-10">
