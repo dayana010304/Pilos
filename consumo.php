@@ -17,16 +17,11 @@ if(!isset($_SESSION['Rol'])){
     }
 }
 
-?>
+$identificacion=isset($_POST['identificacion']) ? $_POST['identificacion'] : '';
+$saldo=isset($_POST['saldo']) ? $_POST['saldo'] : '';
+$fechaV=isset($_POST['fechaVencimiento']) ? $_POST['fechaVencimiento'] : '';
+$fechaC=isset($_POST['ultimoConsumo']) ? $_POST['ultimoConsumo'] : '';
 
-<?php
-    $identificacion=isset($_POST['identificacion']) ? $_POST['identificacion'] : '';
-    $saldo=isset($_POST['saldo']) ? $_POST['saldo'] : '';
-    $fechaVencimiento=isset($_POST['fechaVencimiento']) ? $_POST['fechaVencimiento'] : '';
-    $ultimoConsumo=isset($_POST['ultimoConsumo']) ? $_POST['ultimoConsumo'] : '';
-?>
-
-<?php
 
 include("./Control/conexion.php");
 include("./Control/ControlConexion.php");
@@ -36,13 +31,18 @@ include("./Control/ControlConexion.php");
 
             $consultaSQL= sqlsrv_query($conn, "SELECT * FROM Estudiantes WHERE identificacion = $identificacion");
                 while($formulario = sqlsrv_fetch_array($consultaSQL))
-                {
-                    $identificacion = $formulario["identificacion"];
-                    $saldo = $formulario["saldo"];
+                {   
+                    $fechaConsumo = $formulario["ultimoConsumo"];
+                    $fechaC=$fechaConsumo->format('Y-m-d');
                     $fechaVencimiento = $formulario["fechaVencimiento"];
-                    $ultimoConsumo = $formulario["ultimoConsumo"];
-                }
+                    $fechaV=$fechaVencimiento->format('Y-m-d');
 
+                    $ultimoConsumo = $formulario["ultimoConsumo"];
+                    $saldo = $formulario["saldo"];
+                    $ultimoConsumo = $formulario["ultimoConsumo"];
+
+                }
+            
                 if(isset($_POST["consumir"])){
                     $saldoConsumido = $_POST["saldoConsumido"];
                     $identificacion = $_POST["identificacion"];
@@ -97,13 +97,13 @@ include("./Control/ControlConexion.php");
                         <label for="floatingInputGrid">Última trasacción:</label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="ultimoConsumo" name="ultimoConsumo" value="<?php echo "$ultimoConsumo" ?>">
+                        <input type="date" class="form-control" id="ultimoConsumo" name="ultimoConsumo" value="<?php echo "$fechaC" ?>">
                     </div>
                     <div class="col-md">
                         <label for="floatingInputGrid">Fecha de vencimiento:</label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="fechaVencimiento" name="fechaVencimiento" value="<?php echo "$fechaVencimiento" ?>">
+                        <input type="date" class="form-control" id="fechaVencimiento" name="fechaVencimiento" value="<?php echo "$fechaV" ?>">
                     </div>
                     <br>
                     <button type="submit" name="buscar" id="buscar" class="btn btn-primary">Buscar información por identificacion</button>
@@ -115,7 +115,7 @@ include("./Control/ControlConexion.php");
                         <label for="floatingInputGrid">Cafeteria:</label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="cafeteria" name="cafeteria" readonly="readonly">
+                        <input type="text" class="form-control" id="cafeteria" name="cafeteria" readonly="readonly" value="">
                     </div>
                     <div class="col-md">
                         <label for="floatingInputGrid">Saldo a consumir:</label>

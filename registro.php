@@ -16,10 +16,6 @@
     
         }
     }
-?>
-
-<?php
-
 
 include ('./Control/ControlConexion.php');
 if (isset($_POST["botonEnvio"]))
