@@ -33,7 +33,7 @@ if(!isset($_SESSION['Rol'])){
 <body> 
     <div class="container">
         <div style="text-align: right;">
-            <a class="btn btn-outline-success" type="submit" value="cerrar">Cerrar sesión</a>
+            <a class="btn btn-outline-success" type="submit"  href="cerrar.php" value="cerrar">Cerrar sesión</a>
         </div>
         <br>
         <form action="./Control/insertarCafeterias.php" method="POST">

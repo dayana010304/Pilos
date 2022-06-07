@@ -7,14 +7,6 @@
         if($_SESSION['Rol'] != 2){
             header('location: index.php');
         }
-        if(isset($_GET['cerrar'])){
-            session_unset();
-            
-            session_destroy();
-    
-            header('location: index.php');
-    
-        }
     }
 ?>
 
@@ -33,10 +25,10 @@
 <body> 
     <div class="container">
         <div style="text-align: right;">
-            <a class="btn btn-outline-success" type="submit" value="cerrar" >Cerrar sesión</a>
+            <a class="btn btn-outline-success" href="cerrar.php" type="submit" value="cerrar" >Cerrar sesión</a>
         </div>
         <br>
-        <form action="./Control/insert.php" method="POST">
+        <form action="./Control/insertarEstudiantes.php" method="POST">
             <div class="form-group row">
                 <label  class="col-sm-2 col-form-label">Identificación:</label>
                 <div class="col-sm-10">

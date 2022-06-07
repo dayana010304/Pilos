@@ -21,6 +21,7 @@ if (isset($_POST["botonEnvio"]))
     }else{
         echo "Error";
     }
+    sqlsrv_close( $conexionBD );
 }
 
 ?>

@@ -38,8 +38,10 @@
         $row = $consultaSQL->fetch(PDO::FETCH_NUM);
             if($row == true){
                 $Rol = $row[2];
+                $NombreCafeteria = $row[3];
 
                 $_SESSION['Rol'] = $Rol;
+                $_SESSION['NombreCafeteria'] = $NombreCafeteria;
                 switch($_SESSION['Rol']){
                     case 1:
                         header('location: registroCafeterias.php');
