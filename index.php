@@ -30,14 +30,16 @@
         }
     }
 
-    if(isset($_POST['Email']) && isset($_POST['Password'])){
+    if(isset($_POST['Email']) && isset($_POST['Password']))
+    {
         $Email = $_POST['Email'];
         $Password = $_POST['Password'];
 
         $consultaSQL= $conexionBD->prepare("SELECT * FROM Usuarios WHERE Email = :Email AND Password = :Password");
         $consultaSQL->execute(['Email' => $Email, 'Password' => $Password]);
         $row = $consultaSQL->fetch(PDO::FETCH_NUM);
-            if($row == true){
+            if($row == true)
+            {
                 $Rol = $row[2];
                 $NombreCafeteria = $row[3];
 
@@ -58,10 +60,20 @@
         
                     default:
                 }
-            }else{
-                echo    '<script>
-                            swal("Hello world!");
-                        </script>';
+            }else
+            {
+                echo '<script>
+                        swal({
+                        icon: "error",
+                        title: "Error",
+                        text: "Contraseña o correo electrónico incorrectos",
+                        type: "error",
+                        timer: 3000,
+                        showConfirmButton: false
+                        }).then(function(){
+                        window.location.href = "index.php";
+                    });
+                  </script>';               
             } 
     }
     
@@ -88,7 +100,7 @@
         vertical-align: middle;
         }
     .bg-gradient-primary{
-        background: #122D85;
+        background: #1d436d;
     }
     </style>
 </head>
