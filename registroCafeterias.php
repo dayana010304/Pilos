@@ -43,9 +43,12 @@ if(!isset($_SESSION['Rol'])){
                     <input type="text" class="form-control" id="NombreCafeteria" name="NombreCafeteria" required>
                 </div>
             </div>
+
             <br>
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Correo eletronico:</label>
+                <label class="col-sm-3 col-form-label">Correo electrónico:</label>
+                
+                
                 <div class="col-sm-5">
                     <input type="email" class="form-control" id="Email" name="Email" required>
                 </div>

@@ -51,9 +51,9 @@ include("./Control/conexion.php");
                 $resultado = $sentencia->execute([$identificacion, $saldoConsumido, $fecha, $NombreCafeteria]);
                 if ($resultado === TRUE){
                     echo '<script type="text/javascript">
-                    alert("Registro guardado con exito");
-                    window.location.href="consumo.php";
-                    </script>';
+                            alert("Registro guardado con exito");
+                            window.location.href="consumo.php";
+                        </script>';
                 }else {
                     echo 'hubo un error';
                 }
@@ -137,21 +137,21 @@ include("./Control/conexion.php");
             </div>
 
             <div class="col align-self-start">
-                <form action="" method="POST">
+                <form action="administracion.php" method="POST">
                     <div class="col-md">
                         <label for="floatingInputGrid">Fecha inicial:</label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="fInicial">
+                        <input type="date" class="form-control" id="fInicial" name="fInicial" required>
                     </div>
                     <div class="col-md">
                         <label for="floatingInputGrid">Fecha final:</label>
-                    </div>
+                    </div> 
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="fFinal">
+                        <input type="date" class="form-control" id="fFinal" name="fFinal" required>
                     </div>
                     <br>
-                    <a type="button" class="btn btn-primary" href="administracion.php">Generar consolidado de ventas</a>
+                    <button type="submit" name="consolidado" id="consolidado" class="btn btn-primary">Generar consolidado</button>
                 </form>
             </div>
         </div>
