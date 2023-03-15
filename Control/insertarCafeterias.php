@@ -8,9 +8,7 @@ if (isset($_POST["botonEnvio"]))
     $NombreCafeteria = $_POST["NombreCafeteria"];
     $Email = $_POST["Email"];
     $Password=$_POST["Password"];
-    //$pass=password_hash($Password, PASSWORD_DEFAULT);
     $Rol = $_POST["Rol"];
-
 
     // Consulta para verificar que el registro no exista
     $sentencia1 = $conexionBD->prepare("SELECT * FROM Usuarios WHERE Email=? OR NombreCafeteria=?", [PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL,]);

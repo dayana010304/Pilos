@@ -14,7 +14,7 @@ if( $conn === false ) {
 {
     try
     {
-        $infoDB="sqlsrv:server=PADCOSSIO1\SQLEXPRESS;database=Huelleroces";
+        $infoDB="sqlsrv:server=PADCOSSIO\SQLEXPRESS;database=Huelleroces";
         $conexionBD=new PDO($infoDB);
         return($conexionBD);
     }catch(PDOException $error){
